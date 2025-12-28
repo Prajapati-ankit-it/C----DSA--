@@ -3,11 +3,11 @@ using namespace std;
 
 int decimalToBinary(int number){
     
-    int power, ans = 0;
+    int rem, power, ans;
     power = 1;
 
     while (number > 0){
-        int rem = number%2;
+        rem = number%2;
         number /= 2;
 
         ans += (rem * power);
