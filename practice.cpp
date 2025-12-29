@@ -1,23 +1,35 @@
 #include <iostream>
 using namespace std;
+int SIZE = 0;
 
-int revNum (int num){
-    int rev = 0;
-    while (num > 0){
-        int digit = num % 10;
-        rev  = rev * 10 + digit;
-        num = num / 10;
-
-    }
-
-    return rev; 
-
+int LinearSearch(int age[],int target_V){
+   for (int i = 0; i < SIZE; i++){
+        if (age[i] == target_V){
+            return i; 
+        }
+   }
+   return -1;
+   
 }
 
 int main(){
-    int n;
-    cout <<"Enter N number for check they are 2's power or not: ";
-    cin >> n;
+    int target;
+    cout <<"Enter Array Size: ";
+    cin >> SIZE;
+    cout << "\n";
+
+    int age[SIZE];   
+    cout << "Enter Age: ";
+    for (int i = 0; i < SIZE; i++){
+        cin >> age[i];
+    }
+    cout << "Array data: ";
+    for (int i = 0; i < SIZE; i++){
+        cout << age[i]<<"\n";
+    }
+    cout <<"Enter Target Value for Search: ";
+    cin >> target;
+    cout << "Seached INDEX: "<<LinearSearch(age, target);
     
-    cout << revNum(n);
+    
 }
