@@ -1,15 +1,27 @@
+//WAF to swap the max & min number of an array
+
 #include <iostream>
+#include <climits>
+#include <algorithm>
 using namespace std;
 int SIZE = 0;
 
-int LinearSearch(int age[],int target_V){
-   for (int i = 0; i < SIZE; i++){
-        if (age[i] == target_V){
-            return i; 
+void maxMinSwapArray(int arr[]){
+    int smallest = INT_MAX, largest = INT_MIN, smallest_I = 0, largest_I = 0;
+    for (int i = 0; i < SIZE; i++){
+        largest = max(arr[i],largest);
+        smallest = min(arr[i],smallest);
+    }
+
+    for (int i = 0; i < SIZE; i++){
+        if(smallest == arr[i]){
+            smallest_I = i;
         }
-   }
-   return -1;
-   
+        if (largest == arr[i]){
+            largest_I = i;
+        }
+    }
+    swap(arr[smallest_I], arr[largest_I]);
 }
 
 int main(){
@@ -18,18 +30,15 @@ int main(){
     cin >> SIZE;
     cout << "\n";
 
-    int age[SIZE];   
+    int arr[SIZE];   
     cout << "Enter Age: ";
     for (int i = 0; i < SIZE; i++){
-        cin >> age[i];
+        cin >> arr[i];
     }
-    cout << "Array data: ";
-    for (int i = 0; i < SIZE; i++){
-        cout << age[i]<<"\n";
+    maxMinSwapArray(arr);
+
+        for (int i = 0; i < SIZE; i++){
+        cout << arr[i] <<"\n";
     }
-    cout <<"Enter Target Value for Search: ";
-    cin >> target;
-    cout << "Seached INDEX: "<<LinearSearch(age, target);
-    
     
 }
