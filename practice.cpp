@@ -3,29 +3,24 @@
 using namespace std;
 
 
-int linearSearch(vector<int>& arr, int target){    
-    // int count = 0;    
-    // for(int i : arr){
-    //     count++;
-    //     if (i == target){
-    //         return count-1;
-    //     }
-    // }
-    // return -1;
-    int length = arr.size();
-    for (int i = 0; i < length; i++){
-        if (arr[i] == target){
-            return i;
-        }
-    }
-    return -1;
+void reverseVector(vector<int> &arr){    
+    int length = arr.size(), start = 0 , end = length - 1 ;
     
+    for (int i = 0; i < length ; i++){
+        if (start < end && start != end){
+            swap(arr[start], arr[end]);
+            start++;
+            end--; 
+        }else{
+            return;
+        }       
+    }
 }
 
 int main (){
-    vector<int> arr = {1,2,3};
-    int target = 0;
-    cout<<"Enter what you want to find: ";
-    cin >> target;
-    cout<< linearSearch(arr, target); 
+    vector<int> arr = {1,2,3,4,5,6,7,8,9};
+    reverseVector(arr);
+    for (int i : arr){
+        cout <<i<<"\n";
+    }
 }
