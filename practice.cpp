@@ -2,25 +2,20 @@
 #include<vector>
 using namespace std;
 
-
-void reverseVector(vector<int> &arr){    
-    int length = arr.size(), start = 0 , end = length - 1 ;
-    
-    for (int i = 0; i < length ; i++){
-        if (start < end && start != end){
-            swap(arr[start], arr[end]);
-            start++;
-            end--; 
-        }else{
-            return;
-        }       
+void subArray(vector<int> &arr){    
+    int n = arr.size();
+    for (int st = 0; st < n; st++){
+        for (int end = st; end< n; end++){
+            for (int k = st; k <= end; k++){
+                cout <<arr[k];
+            }
+            cout <<" ";
+        }
+        cout <<"\n";
     }
 }
 
 int main (){
-    vector<int> arr = {1,2,3,4,5,6,7,8,9};
-    reverseVector(arr);
-    for (int i : arr){
-        cout <<i<<"\n";
-    }
+    vector<int> arr = {1,2,3,4,5,6,7,8,9,10};
+    subArray(arr);
 }
