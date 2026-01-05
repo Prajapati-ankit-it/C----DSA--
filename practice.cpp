@@ -2,19 +2,33 @@
 #include<vector>
 using namespace std;
 
-int subArraySumMax(vector<int> &arr){
-    int maxSum = INT_MIN, sum = 0;
-    for (int n : arr){
-        sum += n;
-        maxSum = max(sum, maxSum);
-        if (sum < 0){
-            sum = 0;
+vector<int> pairSum(vector<int> &arr, int target){
+    int n = arr.size();
+    vector<int> ans;
+    int i = 0, j = n-1;
+    int pairSum = 0;
+    
+    while (i < j){
+        pairSum = arr[i] + arr[j];
+        if (pairSum < target){
+            i++;
+        }else if (pairSum > target){
+            j--;   
+        }else if (pairSum == target){
+            ans.push_back(i);
+            ans.push_back(j);
+
+            return ans;
         }
     }
-    return maxSum;
+    return ans;
 }
 
 int main (){
-    vector<int> arr = {3,-4,5,4,-1,7,-8};
-    cout<< subArraySumMax(arr);
+    vector<int> arr = {2,7,11,15};
+    int target = 26;
+    vector<int> result = pairSum(arr,target);
+    for (int idx : result) {
+        cout << idx << " ";
+    }
 }
