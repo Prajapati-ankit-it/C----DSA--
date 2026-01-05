@@ -2,14 +2,13 @@
 #include<vector>
 using namespace std;
 
-int subArraySumMax(vector<int> &arr){    
-    int n = arr.size();
-    int maxSum = INT_MIN;
-    for (int st = 0; st < n; st++){
-        int currSum = 0;
-        for (int end = st; end< n; end++){
-            currSum += arr[end];
-            maxSum = max(currSum,maxSum);
+int subArraySumMax(vector<int> &arr){
+    int maxSum = INT_MIN, sum = 0;
+    for (int n : arr){
+        sum += n;
+        maxSum = max(sum, maxSum);
+        if (sum < 0){
+            sum = 0;
         }
     }
     return maxSum;
