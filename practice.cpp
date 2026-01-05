@@ -2,20 +2,20 @@
 #include<vector>
 using namespace std;
 
-void subArray(vector<int> &arr){    
+int subArraySumMax(vector<int> &arr){    
     int n = arr.size();
+    int maxSum = INT_MIN;
     for (int st = 0; st < n; st++){
+        int currSum = 0;
         for (int end = st; end< n; end++){
-            for (int k = st; k <= end; k++){
-                cout <<arr[k];
-            }
-            cout <<" ";
+            currSum += arr[end];
+            maxSum = max(currSum,maxSum);
         }
-        cout <<"\n";
     }
+    return maxSum;
 }
 
 int main (){
-    vector<int> arr = {1,2,3,4,5,6,7,8,9,10};
-    subArray(arr);
+    vector<int> arr = {3,-4,5,4,-1,7,-8};
+    cout<< subArraySumMax(arr);
 }
