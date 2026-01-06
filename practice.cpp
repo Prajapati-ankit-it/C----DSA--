@@ -1,34 +1,29 @@
 #include<iostream>
 #include<vector>
+#include <algorithm>
 using namespace std;
 
-vector<int> pairSum(vector<int> &arr, int target){
-    int n = arr.size();
-    vector<int> ans;
-    int i = 0, j = n-1;
-    int pairSum = 0;
-    
-    while (i < j){
-        pairSum = arr[i] + arr[j];
-        if (pairSum < target){
-            i++;
-        }else if (pairSum > target){
-            j--;   
-        }else if (pairSum == target){
-            ans.push_back(i);
-            ans.push_back(j);
+int majorityElement(vector<int> &arr){//O(nlogn)
 
-            return ans;
+    int n = arr.size();
+    sort(arr.begin(), arr.end());
+    
+    int frequency = 1;
+    for (int i = 1; i < n; i++){
+        if (arr[i] == arr[i-1]){
+            frequency +=1;
+        }else{
+            frequency = 1;
+        }
+        if (frequency > n/2){
+            return arr[i];
         }
     }
-    return ans;
+    return -1;
 }
 
 int main (){
-    vector<int> arr = {2,7,11,15};
-    int target = 26;
-    vector<int> result = pairSum(arr,target);
-    for (int idx : result) {
-        cout << idx << " ";
-    }
+    vector<int> arr = {1,2,1,2,2};
+    cout << majorityElement(arr);
+
 }
