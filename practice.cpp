@@ -3,27 +3,38 @@
 #include <algorithm>
 using namespace std;
 
-int majorityElement(vector<int> &arr){//O(nlogn)
+int majorityElementMoorseV(vector<int> &arr){//O(1)
 
     int n = arr.size();
-    sort(arr.begin(), arr.end());
     
-    int frequency = 1;
-    for (int i = 1; i < n; i++){
-        if (arr[i] == arr[i-1]){
-            frequency +=1;
-        }else{
-            frequency = 1;
+    int frequency = 0;
+    int ans = 0;
+    for (int i = 0; i < n; i++){
+        if (frequency == 0){
+            ans = arr[i];
         }
-        if (frequency > n/2){
-            return arr[i];
+        if ( ans == arr[i]){
+            frequency++;
+        }else{
+            frequency--;
         }
     }
-    return -1;
+    int count = 0;
+    for(int n : arr){
+        if (n == ans){
+            count++;
+        }
+    }
+    if (count > n/2){
+        return ans;
+    }else{
+        return -1;
+    }
+    return ans;
 }
 
 int main (){
-    vector<int> arr = {1,2,1,2,2};
-    cout << majorityElement(arr);
+    vector<int> arr = {1,2,2,1};
+    cout << majorityElementMoorseV(arr);
 
 }
