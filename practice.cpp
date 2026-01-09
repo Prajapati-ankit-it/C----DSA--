@@ -3,38 +3,32 @@
 #include <algorithm>
 using namespace std;
 
-int majorityElementMoorseV(vector<int> &arr){//O(1)
+vector<int> productExceptSelf(vector<int> &arr){//O(1)
 
     int n = arr.size();
-    
-    int frequency = 0;
-    int ans = 0;
-    for (int i = 0; i < n; i++){
-        if (frequency == 0){
-            ans = arr[i];
+    vector<int> ans;
+    for(int i = 0; i < n; i++){
+        int product = 1;
+        for (int j = 0; j < n; j++){
+            if (i != j){
+                product *= arr[j];
+            }
         }
-        if ( ans == arr[i]){
-            frequency++;
-        }else{
-            frequency--;
-        }
+        ans.push_back(product);
     }
-    int count = 0;
-    for(int n : arr){
-        if (n == ans){
-            count++;
-        }
-    }
-    if (count > n/2){
-        return ans;
-    }else{
-        return -1;
-    }
+
     return ans;
 }
 
 int main (){
-    vector<int> arr = {1,2,2,1};
-    cout << majorityElementMoorseV(arr);
+    vector<int> arr = {1,2,3,4};
+    
+    vector<int> result = productExceptSelf(arr);
+
+    for (int x : result) {   
+        cout << x << " ";
+    }
+
+    return 0;
 
 }
