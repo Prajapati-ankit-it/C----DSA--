@@ -11,12 +11,10 @@ vector<int> productExceptSelf(vector<int> &arr){
         int product = 1;
         for (int j = 0; j < n; j++){
             if (i != j){
-                product *= arr[j];
+                ans[i] *= arr[j];
             }
         }
-        ans.push_back(product);
     }
-
     return ans;
 }
 
