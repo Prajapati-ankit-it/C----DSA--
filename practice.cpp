@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-vector<int> productExceptSelf(vector<int> &arr){//O(1)
+vector<int> productExceptSelf(vector<int> &arr){
 
     int n = arr.size();
     vector<int> ans;
