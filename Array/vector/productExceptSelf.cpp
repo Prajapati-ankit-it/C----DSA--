@@ -6,16 +6,13 @@ using namespace std;
 vector<int> productExceptSelf(vector<int> &arr){
 
     int n = arr.size();
-    vector<int> ans;
-    for(int i = 0; i < n; i++){
-        int product = 1;
-        for (int j = 0; j < n; j++){
-            if (i != j){
-                ans[i] *= arr[j];
-            }
-        }
+    // vector<int> ans;
+    vector<int> prefix;
+    // vector<int> ans;
+    for(int i = 1; i < n; i++){
+        prefix[i] = prefix[i-1] * arr[i-1];
     }
-    return ans;
+    return prefix;
 }
 
 int main (){
